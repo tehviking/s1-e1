@@ -57,6 +57,7 @@ get "/" do
 end
 
 get "/thanks" do
+  @current_track = get_current_track
   erb :thanks
   @client.statuses.update! :status=>"I'm loving #{@current_track["name"]} by #{@current_track["artist"]} right now. (via http://bit.ly/dj8fAY)"  
 end
