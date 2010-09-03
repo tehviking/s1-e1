@@ -2,7 +2,10 @@ require "rubygems"
 require "sinatra"
 require "oauth"
 require "oauth/consumer"
-require 'grackle'
+require "grackle"
+require "httparty"
+require "crack"
+require "json"
 
 enable :sessions
 
