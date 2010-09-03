@@ -8,7 +8,7 @@
 		by
 		<%= @current_track["artist"]%>
 		<p>
-			<a href="<%= @client.statuses.update! :status=>"I'm currently loving #{@current_track["name"]} by #{@current_track["artist"]} (via http://bit.ly/dj8fAY)" %>">Tweet this!</a>
+			<%= @client.statuses.update! :status=>"I'm currently loving #{@current_track["name"]} by #{@current_track["artist"]} (via http://bit.ly/dj8fAY)" %>"
 		</p>
 	<% else %>
 		Nothing currently playing. Is Last.fm scrobbling?
