@@ -33,7 +33,17 @@ before do
   end
 end
 
+def get_current_track
+  response = HTTParty.get('http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&limit=5&user=tehviking&api_key=76ea6155040fc4be7d6b4051b2c5cf49')
+  last_played = response["lfm"]["recenttracks"]["track"][0]
+  if last_played["nowplaying"] == "true"
+    last_played
+  else
+    return nil  
+end
+
 get "/" do
+  @current_track = get_current_track
   if @access_token
     @statuses = @client.statuses.friends_timeline? :count => 100
     erb :index

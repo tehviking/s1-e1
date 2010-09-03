@@ -1,3 +1,6 @@
 sinatra
 oauth
 grackle
+json
+httparty
+crack

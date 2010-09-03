@@ -1,7 +1,16 @@
 <html>
-  <head><title>Ruby Toys -- <%= @name %></title></head>
+  <head><title>Tweet My Music</title></head>
   <body>
-
+	
+	<% if @current_track %>
+		Currently loving:
+		<%= @current_track["name"]%>
+		by
+		<%= @current_track["artist"]%>
+	<% else %>
+		Nothing currently playing. Is Last.fm scrobbling?
+	<% end %>
+	
     <ul>
       <% @statuses.each do |status| %>
         <li><b><%= status.text %></b></li>
