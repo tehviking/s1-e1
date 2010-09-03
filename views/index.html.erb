@@ -1,0 +1,12 @@
+<html>
+  <head><title>Ruby Toys -- <%= @name %></title></head>
+  <body>
+
+    <ul>
+      <% @statuses.each do |status| %>
+        <li><b><%= status.text %></b></li>
+      <% end %>
+    </ul>
+
+  </body>
+</html>
