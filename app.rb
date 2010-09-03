@@ -49,7 +49,7 @@ end
 get "/" do
   @current_track = get_current_track
   if @access_token
-    @statuses = @client.statuses.friends_timeline? :count => 100
+    @statuses = @client.statuses.friends_timeline? :count => 10
     erb :index
   else
     '<a href="/request">Sign On</a>'
