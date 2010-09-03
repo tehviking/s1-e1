@@ -40,6 +40,7 @@ def get_current_track
     last_played
   else
     return nil  
+  end
 end
 
 get "/" do
