@@ -50,6 +50,7 @@ get "/" do
   @current_track = get_current_track
   if @access_token
     @statuses = @client.statuses.friends_timeline? :count => 10
+    @update = @client.statuses.update! :status=>'Digging this music'
     erb :index
   else
     '<a href="/request">Sign On</a>'
