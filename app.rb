@@ -36,30 +36,37 @@ before do
   end
 end
 
-def get_current_track
-  response = HTTParty.get('http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&limit=5&user=tehviking&api_key=76ea6155040fc4be7d6b4051b2c5cf49')
+def get_last_played
+  response = HTTParty.get('http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&limit=5&tehviking&api_key=76ea6155040fc4be7d6b4051b2c5cf49')
   last_played = response["lfm"]["recenttracks"]["track"][0]
-  if last_played["nowplaying"] == "true"
-    last_played
+end
+
+def get_current_track
+  last_played_track = get_last_played
+  if last_played_track["nowplaying"] == "true"
+    last_played_track
   else
     return nil  
   end
 end
 
 get "/" do
+  @last_played = get_last_played
   @current_track = get_current_track
   if @access_token
-    @statuses = @client.statuses.friends_timeline? :count => 10
     erb :index
   else
-    '<a href="/request">Sign On</a>'
+    '<a href="/request">Sign in to Twitter</a>'
   end
+end
+
+post "/" do
+  @client.statuses.update! :status=>"I'm loving #{@current_track["name"]} by #{@current_track["artist"]} right now. (via http://bit.ly/dj8fAY)"
 end
 
 get "/thanks" do
   @current_track = get_current_track
-  erb :thanks
-  @client.statuses.update! :status=>"I'm loving #{@current_track["name"]} by #{@current_track["artist"]} right now. (via http://bit.ly/dj8fAY)"  
+  erb :thanks  
 end
 
 get "/request" do
