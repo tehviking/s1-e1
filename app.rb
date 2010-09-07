@@ -52,8 +52,8 @@ end
 
 get "/" do
   @last_fm_name = params[:last_fm_name]
-  @last_played = get_last_played
-  @current_track = get_current_track
+  @last_played = get_last_played if @last_fm_name
+  @current_track = get_current_track if @last_played
   if @access_token
     erb :index
   else
