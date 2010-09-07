@@ -37,7 +37,7 @@ before do
 end
 
 def get_last_played
-  response = HTTParty.get('http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&limit=5&user=tehviking&api_key=76ea6155040fc4be7d6b4051b2c5cf49')
+  response = HTTParty.get("http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&limit=5&user=#{@last_fm_name}&api_key=76ea6155040fc4be7d6b4051b2c5cf49")
   response["lfm"]["recenttracks"]["track"][0] ? response["lfm"]["recenttracks"]["track"][0] : nil
 end
 
@@ -51,6 +51,7 @@ def get_current_track
 end
 
 get "/" do
+  @last_fm_name = params[:last_fm_name]
   @last_played = get_last_played
   @current_track = get_current_track
   if @access_token

@@ -10,6 +10,11 @@
 		<p>
 			<script src='//d1nu2rn22elx8m.cloudfront.net/buttons/0XmjRS/c5YWg-F3MpL.js'></script>
 		</p>
+	<% elsif !params[:last_fm_name]%>
+		<form name="input" action="/" method="post">
+			Last.fm Username: <input type="last_fm_name" name="last_fm_name" />
+			<input type="submit" value="Submit" />
+		</form>	
 	<% else %>
 		Nothing currently playing. Is Last.fm scrobbling?
 	<% end %>
