@@ -66,7 +66,7 @@ post "/tweet" do
   @last_played = get_last_played if @last_fm_name
   @current_track = get_current_track if @last_played
   @client.statuses.update! :status=>"I'm loving #{@current_track["name"]} by #{@current_track["artist"]} right now. (via http://bit.ly/dj8fAY)"
-  redirect :thanks  
+  redirect "thanks"  
 end
 
 get "/thanks" do
