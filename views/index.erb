@@ -8,7 +8,7 @@
 		by
 		<%= @current_track["artist"]%>
 		<p>
-			<form name="tweet" action="/tweet?<%= params[:last_fm_name] %>" method="post">
+			<form name="tweet" action="/tweet?last_fm_name=<%= params[:last_fm_name] %>" method="post">
 				<input type="submit" value="Tweet This Song!" />
 			</form>		
 		</p>
