@@ -1,6 +1,21 @@
--- This is MY fork. MINE!
+http://tweetmymusic.heroku.com
 
-Hmm... what API to use... ?
+This app takes your currently-playing track from Last.fm and tweets it to the world.
+
+I used twitter-oauth-sinatra for wiring up Twitter, but should have just used the Twitter gem. Oh well.
+
+http://github.com/mirven/twitter-oauth-sinatra
+
+I used HTTParty/Crack to handle the HTTP back-and-forth between this app and Last.fm.
+
+Much of the fact that this is kind of a trainwreck is due to figuring out Sinatra at the same time as these authentication protocols. 
+
+Sinatra is pretty awesome though, and I plan on using it more in the future.
+
+I like the idea of this app and plan to hack on it more in the future. I plan on learning Last.fm's auth protocol and using that instead of "enter your username". I'd also like to replace the existing link with a shortened Last.fm link to the artist/album/song page.
+
+________________________
+
 
 -- RMU SESSION #1 | PROBLEM 1
 -- Submissions due 20:00 UTC 2010.09.07
