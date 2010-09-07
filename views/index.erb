@@ -8,7 +8,9 @@
 		by
 		<%= @current_track["artist"]%>
 		<p>
-			<script src='//d1nu2rn22elx8m.cloudfront.net/buttons/0XmjRS/c5YWg-F3MpL.js'></script>
+			<form name="tweet" action="/tweet" method="post">
+				<input type="submit" value="Tweet This Song!" />
+			</form>		
 		</p>
 	<% elsif !params[:last_fm_name]%>
 		<form name="input" action="/" method="get">
